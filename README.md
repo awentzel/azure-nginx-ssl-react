@@ -1,14 +1,14 @@
-## Azure App Service for Linux / Nginx Configuration
-At the time of this writing Azure is in Preview for App Service running Linux. There are some features missing and this project hopes to provide a stop gap until features are released and available.
+## Azure Web App for Containers running Linux / Nginx / React Configuration
+Azure now has Web App for Containers. Essentially, the exact same thing as Web App for Linux or Windows only configured for Containers. 
  
 ### Project details
-Azure App Service for Linux (AASL) does not yet support running static HTML web sites on Nginx. As such, there was a need to create a Docker image to support my required configuration. Additionally, on Azure it's not necessary to configure SSL/443 or http2 as this is done automatically upstream from the AASL.
+Azure Web App for Linux does not yet support running static HTML web sites on Nginx. This solves that problem. Additionally, on Azure it's not necessary to configure SSL/443 or http2 as this is done automatically upstream from the AASL. Note, that if you only want to run https you can set this using the resource manager on Azure as there isn't yet a UI feature available to turn this on. Search the resource file for your Web App instance of "httpsOnly" and set to "true"..
 
 - Running latest Nginx version
 - Serving static html sites
 - Serving Linux file defaults not Windows
 - Configured for SSL through http to https redirection.
-- 1 day caching for core asset file types
+- 1 and 30 day caching for core asset file types
 
 ### Pre-requisites
 Installation, configuration, and understanding of the latest [Docker](https://docs.docker.com/get-started/)
@@ -16,7 +16,7 @@ Installation, configuration, and understanding of the latest [Docker](https://do
 ### Build, compile, and run
 1. Fetch and clone the source repository.
     ``` 
-    $ git clone https://github.com/awentzel/azure-nginx-ssl.git
+    $ git clone https://github.com/awentzel/azure-nginx-ssl-react.git
 2. Build with Docker
     ``` 
     $ docker build -t azure-nginx .
